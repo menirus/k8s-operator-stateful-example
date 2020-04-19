@@ -36,11 +36,14 @@ type StatefulDBSpec struct {
 // StatefulDBStatus defines the observed state of StatefulDB
 type StatefulDBStatus struct {
 	// Status of the statefulset
-	Status appsv1.StatefulSetStatus `json:"statefulsetstatus,omitempty"`
+	SSStatus appsv1.StatefulSetStatus `json:"statefulsetstatus,omitempty"`
 }
 
+// +kubebuilder:printcolumn:name="replicas",type="integer",JSONPath=".spec.replicas",format="int32"
+// +kubebuilder:printcolumn:name="ready replicas",type="integer",JSONPath=".status.statefulsetstatus.readyReplicas",format="int32"
+// +kubebuilder:printcolumn:name="current replicas",type="integer",JSONPath=".status.statefulsetstatus.currentReplicas",format="int32"
 // +kubebuilder:object:root=true
-
+// +kubebuilder:subresource:status
 // StatefulDB is the Schema for the statefuldbs API
 type StatefulDB struct {
 	metav1.TypeMeta   `json:",inline"`

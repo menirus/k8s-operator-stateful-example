@@ -8,6 +8,19 @@ metadata:
   creationTimestamp: null
   name: statefuldbs.databases.menirus95.dev
 spec:
+  additionalPrinterColumns:
+  - JSONPath: .spec.replicas
+    format: int32
+    name: replicas
+    type: integer
+  - JSONPath: .status.statefulsetstatus.readyReplicas
+    format: int32
+    name: ready replicas
+    type: integer
+  - JSONPath: .status.statefulsetstatus.currentReplicas
+    format: int32
+    name: current replicas
+    type: integer
   group: databases.menirus95.dev
   names:
     kind: StatefulDB
@@ -15,6 +28,8 @@ spec:
     plural: statefuldbs
     singular: statefuldb
   scope: Namespaced
+  subresources:
+    status: {}
   validation:
     openAPIV3Schema:
       description: StatefulDB is the Schema for the statefuldbs API

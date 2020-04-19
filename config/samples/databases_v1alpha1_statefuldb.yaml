@@ -1,7 +1,6 @@
 apiVersion: databases.menirus95.dev/v1alpha1
 kind: StatefulDB
 metadata:
-  name: statefuldb-sample
+  name: sampledb
 spec:
-  # Add fields here
-  foo: bar
+  replicas: 3
