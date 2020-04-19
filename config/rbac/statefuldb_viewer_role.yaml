@@ -1,0 +1,20 @@
+# permissions for end users to view statefuldbs.
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: statefuldb-viewer-role
+rules:
+- apiGroups:
+  - databases.menirus95.dev
+  resources:
+  - statefuldbs
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - databases.menirus95.dev
+  resources:
+  - statefuldbs/status
+  verbs:
+  - get

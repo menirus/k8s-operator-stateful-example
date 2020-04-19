@@ -1,3 +1,7 @@
 domain: menirus95.dev
 repo: sampledb
+resources:
+- group: databases
+  kind: StatefulDB
+  version: v1alpha1
 version: "2"

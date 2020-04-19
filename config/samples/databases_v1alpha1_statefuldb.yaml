@@ -1,0 +1,7 @@
+apiVersion: databases.menirus95.dev/v1alpha1
+kind: StatefulDB
+metadata:
+  name: statefuldb-sample
+spec:
+  # Add fields here
+  foo: bar
