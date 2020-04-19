@@ -17,6 +17,7 @@ limitations under the License.
 package v1alpha1
 
 import (
+	appsv1 "k8s.io/api/apps/v1"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 )
 
@@ -25,17 +26,17 @@ import (
 
 // StatefulDBSpec defines the desired state of StatefulDB
 type StatefulDBSpec struct {
-	// INSERT ADDITIONAL SPEC FIELDS - desired state of cluster
-	// Important: Run "make" to regenerate code after modifying this file
 
-	// Foo is an example field of StatefulDB. Edit StatefulDB_types.go to remove/update
-	Foo string `json:"foo,omitempty"`
+	// Number of replicas in our stateful set
+	// +kubebuilder:validation:Minimum=0
+	// +optional
+	Replicas *int32 `json:"replicas,omitempty"`
 }
 
 // StatefulDBStatus defines the observed state of StatefulDB
 type StatefulDBStatus struct {
-	// INSERT ADDITIONAL STATUS FIELD - define observed state of cluster
-	// Important: Run "make" to regenerate code after modifying this file
+	// Status of the statefulset
+	Status appsv1.StatefulSetStatus `json:"statefulsetstatus,omitempty"`
 }
 
 // +kubebuilder:object:root=true
